@@ -1,12 +1,11 @@
 import 'dart:async';
-
 import 'package:amanah_furniture/common/public_function.dart';
-import 'package:amanah_furniture/ui/auth/login.dart';
+import 'package:amanah_furniture/ui/auth/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:amanah_furniture/common/color_app.dart';
-import 'package:amanah_furniture/common/svg_assets.dart';
+import 'package:amanah_furniture/common/assets.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -30,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (firstTime) {
       _isFirstTimeOn.value = !_isFirstTimeOn.value;
     } else {
-      PublicFunction.navigatorPushReplacement(context, LoginPage());
+      PublicFunction.navigatorPushReplacement(context, AuthPage());
     }
   }
 
@@ -43,7 +42,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print('dari awal');
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       body: SizedBox(
@@ -113,7 +111,7 @@ class _SplashScreenState extends State<SplashScreen> {
                           firstTime = !firstTime;
                         });
                         PublicFunction.navigatorPushReplacement(
-                            context, LoginPage());
+                            context, AuthPage());
                       },
                       child: Text("Lanjut?"),
                     ),
