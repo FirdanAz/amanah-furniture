@@ -1,4 +1,6 @@
 import 'package:amanah_furniture/common/theme_app.dart';
+import 'package:amanah_furniture/ui/auth/auth.dart';
+import 'package:amanah_furniture/ui/auth/login.dart';
 import 'package:amanah_furniture/ui/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,9 +22,9 @@ class MyApp extends StatelessWidget {
         title: 'Amanah Furniture',
         debugShowCheckedModeBanner: false,
         theme: ThemeApp.getTheme(context),
-        home: const SplashScreen(),
+        home: SplashScreen(),
       ),
-      child: const SplashScreen(),
+      // child: const LoginPage(),
     );
   }
 }
