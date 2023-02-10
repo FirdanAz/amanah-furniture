@@ -6,3 +6,6 @@ class SvgAssets {
   static const String vectorKeranjang =
       'assets/component/ic_keranjang.svg';
 }
+class ImgAssets {
+  static const String loginBackground = 'assets/image/login_background.jpg';
+}

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:amanah_furniture/common/color_app.dart';
-import 'package:amanah_furniture/common/svg_assets.dart';
+import 'package:amanah_furniture/common/assets.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

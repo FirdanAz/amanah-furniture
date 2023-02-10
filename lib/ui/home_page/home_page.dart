@@ -1,5 +1,5 @@
 import 'package:amanah_furniture/common/color_app.dart';
-import 'package:amanah_furniture/common/svg_assets.dart';
+import 'package:amanah_furniture/common/assets.dart';
 import 'package:amanah_furniture/model/product_all_model.dart';
 import 'package:amanah_furniture/service/api_service.dart';
 import 'package:flutter/material.dart';
