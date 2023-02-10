@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:amanah_furniture/common/public_function.dart';
 import 'package:amanah_furniture/ui/auth/login.dart';
+import 'package:amanah_furniture/ui/home_page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (firstTime) {
       _isFirstTimeOn.value = !_isFirstTimeOn.value;
     } else {
-      PublicFunction.navigatorPushReplacement(context, LoginPage());
+      PublicFunction.navigatorPushReplacement(context, HomePage());
     }
   }
 
