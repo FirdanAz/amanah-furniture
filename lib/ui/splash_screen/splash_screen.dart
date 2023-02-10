@@ -20,7 +20,6 @@ class _SplashScreenState extends State<SplashScreen> {
   final ValueNotifier<bool> _isTextOn = ValueNotifier<bool>(false);
   final ValueNotifier<bool> _isVectorOn = ValueNotifier<bool>(false);
   final ValueNotifier<bool> _isFirstTimeOn = ValueNotifier<bool>(false);
-  bool firstTime = false;
 
   Future _autoAnimate() async {
     await Future.delayed(const Duration(milliseconds: 500));
@@ -28,10 +27,10 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(const Duration(milliseconds: 580));
     _isTextOn.value = !_isTextOn.value;
     await Future.delayed(const Duration(seconds: 2));
-    if (firstTime) {
-      _isFirstTimeOn.value = !_isFirstTimeOn.value;
-    } else {
+    if (await PublicFunction.getToken() == '') {
       PublicFunction.navigatorPushReplacement(context, AuthPage());
+    } else {
+      PublicFunction.navigatorPushReplacement(context, HomePage());
     }
   }
 
@@ -99,28 +98,28 @@ class _SplashScreenState extends State<SplashScreen> {
                 },
               ),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: ValueListenableBuilder(
-                valueListenable: _isFirstTimeOn,
-                builder: (context, value, _) {
-                  return AnimatedOpacity(
-                    duration: const Duration(milliseconds: 200),
-                    opacity: _isFirstTimeOn.value ? 1 : 0,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          firstTime = !firstTime;
-                        });
-                        PublicFunction.navigatorPushReplacement(
-                            context, AuthPage());
-                      },
-                      child: Text("Lanjut?"),
-                    ),
-                  );
-                },
-              ),
-            )
+            // Align(
+            //   alignment: Alignment.bottomCenter,
+            //   child: ValueListenableBuilder(
+            //     valueListenable: _isFirstTimeOn,
+            //     builder: (context, value, _) {
+            //       return AnimatedOpacity(
+            //         duration: const Duration(milliseconds: 200),
+            //         opacity: _isFirstTimeOn.value ? 1 : 0,
+            //         child: ElevatedButton(
+            //           onPressed: () {
+            //             setState(() {
+            //               firstTime = !firstTime;
+            //             });
+            //             PublicFunction.navigatorPushReplacement(
+            //                 context, AuthPage());
+            //           },
+            //           child: Text("Lanjut?"),
+            //         ),
+            //       );
+            //     },
+            //   ),
+            // )
           ],
         ),
       ),

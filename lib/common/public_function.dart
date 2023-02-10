@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// Digunakan untuk fungsi/method yang digunakan secara global
 /// contoh :
@@ -17,6 +18,21 @@ class PublicFunction {
   static void navigatorPushAndRemoved(BuildContext context, Widget widget) {
     Navigator.pushAndRemoveUntil(
         context, MaterialPageRoute(builder: (_) => widget), (route) => false);
+  }
+
+  static Future<bool> setToken(String value) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.setString('token', value);
+  }
+
+  static Future<String> getToken() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('token') ?? '';
+  }
+
+  static Future<bool> removeToken(String token) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.remove(token);
   }
 
   static String? emailValidator(value) {

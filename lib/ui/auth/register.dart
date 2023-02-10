@@ -1,6 +1,6 @@
 import 'package:amanah_furniture/common/color_app.dart';
 import 'package:amanah_furniture/common/public_function.dart';
-import 'package:amanah_furniture/ui/home/home.dart';
+import 'package:amanah_furniture/ui/home_page/home_page.dart';
 import 'package:amanah_furniture/ui/widget/auth/login_register_button.dart';
 import 'package:amanah_furniture/ui/widget/custom_text_form_field.dart';
 import 'package:amanah_furniture/ui/widget/snackbar.dart';
@@ -161,7 +161,7 @@ class _RegisterPartState extends State<RegisterPart> {
                   );
                 } else {
                   showLoaderDialog(context);
-                  await Future.delayed(Duration(minutes: 2));
+                  await Future.delayed(Duration(seconds: 2));
                   PublicFunction.navigatorPushAndRemoved(context, HomePage());
                 }
               } else {

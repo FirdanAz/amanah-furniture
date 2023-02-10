@@ -1,6 +1,7 @@
 import 'package:amanah_furniture/common/color_app.dart';
 import 'package:amanah_furniture/common/public_function.dart';
-import 'package:amanah_furniture/ui/home/home.dart';
+import 'package:amanah_furniture/service/api_service.dart';
+import 'package:amanah_furniture/ui/home_page/home_page.dart';
 import 'package:amanah_furniture/ui/widget/auth/login_register_button.dart';
 import 'package:amanah_furniture/ui/widget/custom_text_form_field.dart';
 import 'package:amanah_furniture/ui/widget/snackbar.dart';
@@ -125,8 +126,13 @@ class _LoginPartState extends State<LoginPart> {
             onPreesed: () async {
               if (_formKey.currentState!.validate()) {
                 showLoaderDialog(context);
-                await Future.delayed(Duration(minutes: 2));
-                PublicFunction.navigatorPushAndRemoved(context, HomePage());
+                bool isSucceed = await ApiService().postLogin(
+                    context, _emailController.text, _passwordController.text);
+                Navigator.of(context).pop();
+                isSucceed
+                    ? PublicFunction.navigatorPushAndRemoved(
+                        context, HomePage())
+                    : null;
               } else {
                 showSnackBar(
                   context,
