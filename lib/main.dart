@@ -1,6 +1,4 @@
 import 'package:amanah_furniture/common/theme_app.dart';
-import 'package:amanah_furniture/ui/auth/auth.dart';
-import 'package:amanah_furniture/ui/auth/login.dart';
 import 'package:amanah_furniture/ui/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

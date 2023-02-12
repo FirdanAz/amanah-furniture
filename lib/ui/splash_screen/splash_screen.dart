@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:amanah_furniture/common/public_function.dart';
 import 'package:amanah_furniture/ui/auth/login.dart';
 import 'package:amanah_furniture/ui/home_page/home_page.dart';
-import 'package:amanah_furniture/ui/auth/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
     _isTextOn.value = !_isTextOn.value;
     await Future.delayed(const Duration(seconds: 2));
     if (await PublicFunction.getToken() == '') {
-      PublicFunction.navigatorPushReplacement(context, AuthPage());
+      PublicFunction.navigatorPushReplacement(context, LoginPage());
     } else {
       PublicFunction.navigatorPushReplacement(context, HomePage());
     }
