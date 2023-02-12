@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       allProduct = product;
     });
+    print(await PublicFunction.getToken());
     _isLoad = false;
   }
 
@@ -42,6 +43,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     // TODO: implement initState
     _getData();
+
     super.initState();
   }
 

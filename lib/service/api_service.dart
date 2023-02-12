@@ -38,7 +38,6 @@ class ApiService {
 
     try {
       final response = await http.post(Uri.parse(url), body: body);
-      print('status code : ${response.statusCode}');
       if (response.statusCode == 200) {
         String token = json.decode(response.body)['access_token'];
         print(token);
@@ -90,9 +89,11 @@ class ApiService {
         await PublicFunction.setToken(token);
         return true;
       } else {
+        // String errorMessage = json.decode(response.body)['erorr'];
+        // print(errorMessage);
         showSnackBar(
           context,
-          content: const Text('Email atau Password salah'),
+          content: const Text('Email / Nomor telepon sudah terdaftar'),
           color: Colors.red,
         );
         return false;

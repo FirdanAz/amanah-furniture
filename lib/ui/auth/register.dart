@@ -2,6 +2,7 @@ import 'package:amanah_furniture/common/assets.dart';
 import 'package:amanah_furniture/common/color_app.dart';
 import 'package:amanah_furniture/common/public_function.dart';
 import 'package:amanah_furniture/common/validator.dart';
+import 'package:amanah_furniture/service/api_service.dart';
 import 'package:amanah_furniture/ui/home_page/home_page.dart';
 import 'package:amanah_furniture/ui/widget/auth/login_register_button.dart';
 import 'package:amanah_furniture/ui/widget/custom_text_form_field.dart';
@@ -186,19 +187,29 @@ class _RegisterpageState extends State<Registerpage> {
                         isLogin: false,
                         onPreesed: () async {
                           if (_formKey.currentState!.validate()) {
-                            if (_confirmPasswordController.text !=
+                            if (_confirmPasswordController.text ==
                                 _passwordController.text) {
+                              showLoaderDialog(context);
+                              bool isSucceed = await ApiService().postRegister(
+                                context: context,
+                                username: _usernameController.text,
+                                email: _emailController.text,
+                                alamat: _alamatController.text,
+                                telepon: _teleponController.text.trim(),
+                                password: _passwordController.text,
+                              );
+                              Navigator.of(context).pop();
+                              isSucceed
+                                  ? PublicFunction.navigatorPushAndRemoved(
+                                      context, HomePage())
+                                  : null;
+                            } else {
                               showSnackBar(
                                 context,
                                 content: const Text(
                                     'Konfirmasi password dengan benar!'),
                                 color: Colors.red,
                               );
-                            } else {
-                              showLoaderDialog(context);
-                              await Future.delayed(Duration(seconds: 2));
-                              PublicFunction.navigatorPushAndRemoved(
-                                  context, HomePage());
                             }
                           } else {
                             showSnackBar(
