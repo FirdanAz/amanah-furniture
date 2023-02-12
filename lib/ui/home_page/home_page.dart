@@ -3,7 +3,7 @@ import 'package:amanah_furniture/common/assets.dart';
 import 'package:amanah_furniture/common/public_function.dart';
 import 'package:amanah_furniture/model/product_all_model.dart';
 import 'package:amanah_furniture/service/api_service.dart';
-import 'package:amanah_furniture/ui/auth/auth.dart';
+import 'package:amanah_furniture/ui/auth/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -138,7 +138,7 @@ class _HomePageState extends State<HomePage> {
                                   await PublicFunction.removeToken('token')
                                       .then((value) => PublicFunction
                                           .navigatorPushAndRemoved(
-                                              context, const AuthPage())),
+                                              context, const LoginPage())),
                               child: Ink(
                                 width: 40.w,
                                 height: 40.h,

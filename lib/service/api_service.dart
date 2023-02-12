@@ -53,18 +53,57 @@ class ApiService {
         return false;
       }
     } on SocketException {
-      showSnackBar(
-        context,
-        content: const Text('Tidak koneksi Internet'),
-        color: Colors.red,
-      );
+      showSnackBar(context,
+          content: const Text('Tidak koneksi Internet'), color: Colors.red);
       return false;
     } on HttpException {
-      showSnackBar(
-        context,
-        content: const Text('HttpException'),
-        color: Colors.red,
-      );
+      showSnackBar(context,
+          content: const Text('HttpException'), color: Colors.red);
+      return false;
+    }
+  }
+
+  Future postRegister({
+    required BuildContext context,
+    required String username,
+    required String email,
+    required String alamat,
+    required String telepon,
+    required String password,
+  }) async {
+    const endPoint = '/register';
+    final url = '$_baseUrl$endPoint';
+    final body = {
+      'username': username,
+      'email': email,
+      'password': password,
+      'alamat': alamat,
+      'no_hp': telepon,
+    };
+
+    try {
+      final response = await http.post(Uri.parse(url), body: body);
+      print('status code : ${response.statusCode}');
+      if (response.statusCode == 200) {
+        String token = json.decode(response.body)['access_token'];
+        print(token);
+        await PublicFunction.setToken(token);
+        return true;
+      } else {
+        showSnackBar(
+          context,
+          content: const Text('Email atau Password salah'),
+          color: Colors.red,
+        );
+        return false;
+      }
+    } on SocketException {
+      showSnackBar(context,
+          content: const Text('Tidak koneksi Internet'), color: Colors.red);
+      return false;
+    } on HttpException {
+      showSnackBar(context,
+          content: const Text('HttpException'), color: Colors.red);
       return false;
     }
   }

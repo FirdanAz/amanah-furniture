@@ -34,17 +34,4 @@ class PublicFunction {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.remove(token);
   }
-
-  static String? emailValidator(value) {
-    bool emailValidate = RegExp(
-            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-        .hasMatch(value);
-    return !emailValidate ? 'Email tidak valid' : null;
-  }
-
-  static String? passwordValidator(value) {
-    return value.toString().length < 8
-        ? 'Kata sandi tidak boleh kurang dari 8 karakter'
-        : null;
-  }
 }

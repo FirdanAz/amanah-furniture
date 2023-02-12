@@ -34,6 +34,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       obscureText: widget.isPassword ? _isPasswordNotVisible : false,
       keyboardType: widget.textInputType,
       validator: widget.validator,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       style: TextStyle(
           color: const Color(0xff555555),
           fontSize: 13.sp,
