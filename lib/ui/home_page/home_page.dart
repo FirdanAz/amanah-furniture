@@ -294,8 +294,8 @@ class _HomePageState extends State<HomePage> {
                                         child: SizedBox(
                                           width: 76.22 * fem,
                                           height: 75.75 * fem,
-                                          child: Image.asset(
-                                            'assets/kursi.png',
+                                          child: Image.network(
+                                            'http://amanahfurniture.space/images/${item.gambarBarang}',
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -322,26 +322,26 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                   ),
-                                  Positioned(
-                                    // loremipsumissimplydummytextoft (690:104)
-                                    left: 107 * fem,
-                                    top: 55 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 146 * fem,
-                                        height: 21 * fem,
-                                        child: Text(
-                                          item.deskripsiBarang.toString(),
-                                          style: GoogleFonts.poppins(
-                                            fontSize: 7 * ffem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.5 * ffem / fem,
-                                            color: Color(0xff6f6f6f),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+                                  // Positioned(
+                                  //   // loremipsumissimplydummytextoft (690:104)
+                                  //   left: 107 * fem,
+                                  //   top: 55 * fem,
+                                  //   child: Align(
+                                  //     child: SizedBox(
+                                  //       width: 146 * fem,
+                                  //       height: 21 * fem,
+                                  //       child: Text(
+                                  //         item.deskripsiBarang.toString(),
+                                  //         style: GoogleFonts.poppins(
+                                  //           fontSize: 7 * ffem,
+                                  //           fontWeight: FontWeight.w400,
+                                  //           height: 1.5 * ffem / fem,
+                                  //           color: Color(0xff6f6f6f),
+                                  //         ),
+                                  //       ),
+                                  //     ),
+                                  //   ),
+                                  // ),
                                   Positioned(
                                     // rp500000kbD (690:105)
                                     left: 107 * fem,

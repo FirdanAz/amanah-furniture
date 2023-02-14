@@ -31,37 +31,22 @@ class Data {
   int? id;
   int? kategoriId;
   String? namaBarang;
-  String? slug;
   int? harga;
-  String? deskripsiBarang;
   String? gambarBarang;
-  String? gambarDetailBarang;
-  Null? createdAt;
-  Null? updatedAt;
 
   Data(
       {this.id,
         this.kategoriId,
         this.namaBarang,
-        this.slug,
         this.harga,
-        this.deskripsiBarang,
-        this.gambarBarang,
-        this.gambarDetailBarang,
-        this.createdAt,
-        this.updatedAt});
+        this.gambarBarang});
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     kategoriId = json['kategori_id'];
     namaBarang = json['nama_barang'];
-    slug = json['slug'];
     harga = json['harga'];
-    deskripsiBarang = json['deskripsi_barang'];
     gambarBarang = json['gambar_barang'];
-    gambarDetailBarang = json['gambar_detail_barang'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
   }
 
   Map<String, dynamic> toJson() {
@@ -69,13 +54,8 @@ class Data {
     data['id'] = this.id;
     data['kategori_id'] = this.kategoriId;
     data['nama_barang'] = this.namaBarang;
-    data['slug'] = this.slug;
     data['harga'] = this.harga;
-    data['deskripsi_barang'] = this.deskripsiBarang;
     data['gambar_barang'] = this.gambarBarang;
-    data['gambar_detail_barang'] = this.gambarDetailBarang;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
     return data;
   }
 }
