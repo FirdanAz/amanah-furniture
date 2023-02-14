@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:amanah_furniture/common/public_function.dart';
 import 'package:amanah_furniture/ui/auth/login.dart';
+import 'package:amanah_furniture/ui/bottom_navigation/bottom_navigation.dart';
 import 'package:amanah_furniture/ui/home_page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -29,7 +30,8 @@ class _SplashScreenState extends State<SplashScreen> {
     if (await PublicFunction.getToken() == '') {
       PublicFunction.navigatorPushReplacement(context, LoginPage());
     } else {
-      PublicFunction.navigatorPushReplacement(context, HomePage());
+      PublicFunction.navigatorPushReplacement(
+          context, CustomBottomNavigation());
     }
   }
 
