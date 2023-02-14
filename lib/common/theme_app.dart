@@ -24,6 +24,8 @@ class ThemeApp {
       primarySwatch: primaryMaterialColor,
       accentColor: ColorApp.accent,
       brightness: Brightness.light,
+      iconTheme: IconThemeData(color: ColorApp.primary),
+      // scaffoldBackgroundColor: ColorApp.accent,
       textTheme: Theme.of(context)
           .textTheme
           .apply(fontFamily: 'Poppins', bodyColor: Colors.black),

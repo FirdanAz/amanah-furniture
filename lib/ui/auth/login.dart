@@ -4,6 +4,7 @@ import 'package:amanah_furniture/common/public_function.dart';
 import 'package:amanah_furniture/common/validator.dart';
 import 'package:amanah_furniture/service/api_service.dart';
 import 'package:amanah_furniture/ui/auth/register.dart';
+import 'package:amanah_furniture/ui/bottom_navigation/bottom_navigation.dart';
 import 'package:amanah_furniture/ui/home_page/home_page.dart';
 import 'package:amanah_furniture/ui/widget/auth/login_register_button.dart';
 import 'package:amanah_furniture/ui/widget/custom_text_form_field.dart';
@@ -170,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.of(context).pop();
                               isSucceed
                                   ? PublicFunction.navigatorPushAndRemoved(
-                                      context, HomePage())
+                                      context, CustomBottomNavigation())
                                   : null;
                             } else {
                               showSnackBar(
