@@ -4,6 +4,7 @@ import 'package:amanah_furniture/common/public_function.dart';
 import 'package:amanah_furniture/model/product_all_model.dart';
 import 'package:amanah_furniture/service/api_service.dart';
 import 'package:amanah_furniture/ui/auth/login.dart';
+import 'package:amanah_furniture/ui/detail/detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -36,6 +37,7 @@ class _HomePageState extends State<HomePage> {
       allProduct = product;
     });
     print(await PublicFunction.getToken());
+    print(allProduct);
     _isLoad = false;
   }
 
@@ -94,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               bottom: PreferredSize(
-                preferredSize: const Size.fromHeight(70),
+                preferredSize: const Size.fromHeight(72.6),
                 child: Center(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -218,7 +220,12 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            SliverFillRemaining(
+            const SliverToBoxAdapter(
+              child: SizedBox(
+                height: 5,
+              ),
+            ),
+            SliverToBoxAdapter(
               child: _isLoad == true
                   ? Center(
                       child: CircularProgressIndicator(),
@@ -227,6 +234,7 @@ class _HomePageState extends State<HomePage> {
                       alignment: Alignment.center,
                       margin: EdgeInsets.all(10),
                       child: ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: allProduct!.data!.length,
                         itemBuilder: (context, index) {
@@ -243,126 +251,132 @@ class _HomePageState extends State<HomePage> {
                             width: double.infinity,
                             height: 120 * fem,
                             child: Container(
-                              child: Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  Positioned(
-                                    // rectangle588fPR (690:99)
-                                    left: 0 * fem,
-                                    right: 0 * fem,
-                                    top: 20 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 300 * fem,
-                                        height: 100 * fem,
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10 * fem),
-                                            border: Border.all(
-                                                color: Color(0xffeeeeee)),
-                                            color: Color(0xffffffff),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Color(0x19000000),
-                                                offset:
-                                                    Offset(0 * fem, 10 * fem),
-                                                blurRadius: 10 * fem,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    // group73hqu (690:100)
-                                    left: 15 * fem,
-                                    top: 0 * fem,
-                                    child: Container(
-                                      padding: EdgeInsets.fromLTRB(3.39 * fem,
-                                          16.41 * fem, 3.39 * fem, 12.84 * fem),
-                                      width: 83 * fem,
-                                      height: 105 * fem,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xffeeeeee),
-                                        borderRadius:
-                                            BorderRadius.circular(5 * fem),
-                                      ),
-                                      child: Center(
-                                        // kursiremovebgpreview1mKy (690:102)
+                              child: InkWell(
+                                hoverColor: Colors.blue,
+                                onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(id: item.id),));
+                                },
+                                child: Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    Positioned(
+                                      // rectangle588fPR (690:99)
+                                      left: 0 * fem,
+                                      right: 0 * fem,
+                                      top: 20 * fem,
+                                      child: Align(
                                         child: SizedBox(
-                                          width: 76.22 * fem,
-                                          height: 75.75 * fem,
-                                          child: Image.network(
-                                            'http://amanahfurniture.space/images/${item.gambarBarang}',
-                                            fit: BoxFit.cover,
+                                          width: 300 * fem,
+                                          height: 100 * fem,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10 * fem),
+                                              border: Border.all(
+                                                  color: Color(0xffeeeeee)),
+                                              color: Color(0xffffffff),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Color(0x19000000),
+                                                  offset:
+                                                      Offset(0 * fem, 10 * fem),
+                                                  blurRadius: 10 * fem,
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Positioned(
-                                    // kursisedangpremiumFW3 (690:103)
-                                    left: 107 * fem,
-                                    top: 35 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 115 * fem,
-                                        height: 15 * fem,
-                                        child: Text(
-                                          item.namaBarang.toString(),
-                                          style: GoogleFonts.poppins(
-                                            fontSize: 10 * ffem,
-                                            fontWeight: FontWeight.w500,
-                                            height: 1.5 * ffem / fem,
-                                            color: Color(0xff797979),
+                                    Positioned(
+                                      // group73hqu (690:100)
+                                      left: 15 * fem,
+                                      top: 0 * fem,
+                                      child: Container(
+                                        padding: EdgeInsets.fromLTRB(3.39 * fem,
+                                            16.41 * fem, 3.39 * fem, 12.84 * fem),
+                                        width: 83 * fem,
+                                        height: 105 * fem,
+                                        decoration: BoxDecoration(
+                                          color: Color(0xffeeeeee),
+                                          borderRadius:
+                                              BorderRadius.circular(5 * fem),
+                                        ),
+                                        child: Center(
+                                          // kursiremovebgpreview1mKy (690:102)
+                                          child: SizedBox(
+                                            width: 76.22 * fem,
+                                            height: 75.75 * fem,
+                                            child: Image.network(
+                                              'http://amanahfurniture.space/images/${item.gambarBarang}',
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  // Positioned(
-                                  //   // loremipsumissimplydummytextoft (690:104)
-                                  //   left: 107 * fem,
-                                  //   top: 55 * fem,
-                                  //   child: Align(
-                                  //     child: SizedBox(
-                                  //       width: 146 * fem,
-                                  //       height: 21 * fem,
-                                  //       child: Text(
-                                  //         item.deskripsiBarang.toString(),
-                                  //         style: GoogleFonts.poppins(
-                                  //           fontSize: 7 * ffem,
-                                  //           fontWeight: FontWeight.w400,
-                                  //           height: 1.5 * ffem / fem,
-                                  //           color: Color(0xff6f6f6f),
-                                  //         ),
-                                  //       ),
-                                  //     ),
-                                  //   ),
-                                  // ),
-                                  Positioned(
-                                    // rp500000kbD (690:105)
-                                    left: 107 * fem,
-                                    top: 90 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 59 * fem,
-                                        height: 15 * fem,
-                                        child: Text(
-                                          rupiah,
-                                          style: GoogleFonts.poppins(
-                                            fontSize: 10 * ffem,
-                                            fontWeight: FontWeight.w500,
-                                            height: 1.5 * ffem / fem,
-                                            color: Color(0xffe0c28d),
+                                    Positioned(
+                                      // kursisedangpremiumFW3 (690:103)
+                                      left: 107 * fem,
+                                      top: 35 * fem,
+                                      child: Align(
+                                        child: SizedBox(
+                                          width: 115 * fem,
+                                          height: 15 * fem,
+                                          child: Text(
+                                            item.namaBarang.toString(),
+                                            style: GoogleFonts.poppins(
+                                              fontSize: 10 * ffem,
+                                              fontWeight: FontWeight.w500,
+                                              height: 1.5 * ffem / fem,
+                                              color: Color(0xff797979),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                    // Positioned(
+                                    //   // loremipsumissimplydummytextoft (690:104)
+                                    //   left: 107 * fem,
+                                    //   top: 55 * fem,
+                                    //   child: Align(
+                                    //     child: SizedBox(
+                                    //       width: 146 * fem,
+                                    //       height: 21 * fem,
+                                    //       child: Text(
+                                    //         item.deskripsiBarang.toString(),
+                                    //         style: GoogleFonts.poppins(
+                                    //           fontSize: 7 * ffem,
+                                    //           fontWeight: FontWeight.w400,
+                                    //           height: 1.5 * ffem / fem,
+                                    //           color: Color(0xff6f6f6f),
+                                    //         ),
+                                    //       ),
+                                    //     ),
+                                    //   ),
+                                    // ),
+                                    Positioned(
+                                      // rp500000kbD (690:105)
+                                      left: 107 * fem,
+                                      top: 90 * fem,
+                                      child: Align(
+                                        child: SizedBox(
+                                          width: 59 * fem,
+                                          height: 15 * fem,
+                                          child: Text(
+                                            rupiah,
+                                            style: GoogleFonts.poppins(
+                                              fontSize: 10 * ffem,
+                                              fontWeight: FontWeight.w500,
+                                              height: 1.5 * ffem / fem,
+                                              color: Color(0xffe0c28d),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           );
