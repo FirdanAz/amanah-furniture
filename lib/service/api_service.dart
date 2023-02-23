@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:amanah_furniture/common/public_function.dart';
 import 'package:amanah_furniture/model/product_all_model.dart';
+import 'package:amanah_furniture/model/product_detail_model.dart';
 import 'package:amanah_furniture/ui/widget/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -18,6 +19,25 @@ class ApiService {
       print('status code : ${response.statusCode}');
       if (response.statusCode == 200) {
         AllProduct model = AllProduct.fromJson(json.decode(response.body));
+        print(model);
+        return model;
+      } else {
+        throw Exception("Failed to fetch data from API");
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future getDetail(int id) async {
+    var endPoint = '/produk/$id';
+    final url = '$_baseUrl$endPoint';
+
+    try {
+      final response = await http.get(Uri.parse(url));
+      print('status code : ${response.statusCode}');
+      if (response.statusCode == 200) {
+        DetailModel model = DetailModel.fromJson(json.decode(response.body));
         print(model);
         return model;
       } else {
