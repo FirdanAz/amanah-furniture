@@ -1,4 +1,5 @@
 import 'package:amanah_furniture/common/color_app.dart';
+import 'package:amanah_furniture/ui/profile/profile.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
     HomePage(),
     Center(child: Text("Favorit")),
     Center(child: Text("Notifikasi")),
-    Center(child: Text("Profil")),
+    ProfilePage(),
   ];
 
   @override
@@ -30,7 +31,7 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
       bottomNavigationBar: CurvedNavigationBar(
         key: _bottomNavigationKey,
         height: 54.h,
-        backgroundColor: Colors.transparent,
+        backgroundColor: ColorApp.primary,
         color: ColorApp.accent,
         animationDuration: const Duration(milliseconds: 320),
         onTap: (value) => setState(() {
