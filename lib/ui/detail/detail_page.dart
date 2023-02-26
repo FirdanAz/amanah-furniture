@@ -1,4 +1,5 @@
 import 'package:amanah_furniture/common/color_app.dart';
+import 'package:amanah_furniture/ui/keranjang/keranjang_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -67,35 +68,44 @@ class _DetailPageState extends State<DetailPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    width: 260,
-                    height: 40,
-                    color: ColorApp.accent,
-                    child: Center(
-                      child: Text(
-                        'Order Sekarng',
-                        style: GoogleFonts.poppins(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
-                          color: Colors.white
+                  InkWell(
+                    onTap: () {
+                      var item = detailModel!.data!;
+                       ApiService().postKeranjang(context: context ,barang_id: item.id!.toString(), nama_barang: item.namaBarang!.toString(), harga: item.harga!.toString(), jumlah: '1', total_harga: item.harga!.toString());
+                    },
+                    child: Container(
+                      width: 260,
+                      height: 40,
+                      color: ColorApp.accent,
+                      child: Center(
+                        child: Text(
+                          'Order Sekarng',
+                          style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            color: Colors.white
+                          ),
                         ),
                       ),
                     ),
                   ),
                   SizedBox(width: 15,),
-                  SizedBox(
-                    height: 40,
-                    width: 40,
-                    child: Ink(
-                      width: 40.w,
-                      height: 40.h,
-                      decoration: BoxDecoration(
-                          color: ColorApp.accent,
-                          borderRadius: BorderRadius.circular(5)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: SvgPicture.asset(
-                            SvgAssets.vectorKeranjang),
+                  InkWell(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => KeranjangPage(),)),
+                    child: SizedBox(
+                      height: 40,
+                      width: 40,
+                      child: Ink(
+                        width: 40.w,
+                        height: 40.h,
+                        decoration: BoxDecoration(
+                            color: ColorApp.accent,
+                            borderRadius: BorderRadius.circular(5)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: SvgPicture.asset(
+                              SvgAssets.vectorKeranjang),
+                        ),
                       ),
                     ),
                   )
@@ -152,6 +162,38 @@ class _DetailPageState extends State<DetailPage> {
           ),
           SliverToBoxAdapter(
             child: Container(
+              margin: EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '${detailModel!.data!.deskripsiBarang}',
+                    style: GoogleFonts.poppins(
+                      color: Colors.black
+                    ),
+                  ),
+                  SizedBox(height: 5,),
+                  Text(
+                    '${detailModel!.data!.namaBarang}',
+                    style: GoogleFonts.poppins(
+                        color: Colors.black54
+                    ),
+                  ),
+                  SizedBox(height: 10,),
+                  Text(
+                    '${rupiah(detailModel!.data!.harga!)}',
+                    style: GoogleFonts.poppins(
+                      color: ColorApp.accent,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Container(
               color: Colors.white,
               margin: EdgeInsets.only(left: 10,top: 15),
               child: Column(
@@ -182,38 +224,6 @@ class _DetailPageState extends State<DetailPage> {
                       },
                     ),
                   )
-                ],
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Container(
-              margin: EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '${detailModel!.data!.deskripsiBarang}',
-                    style: GoogleFonts.poppins(
-                      color: Colors.black
-                    ),
-                  ),
-                  SizedBox(height: 5,),
-                  Text(
-                    '${detailModel!.data!.namaBarang}',
-                    style: GoogleFonts.poppins(
-                        color: Colors.black54
-                    ),
-                  ),
-                  SizedBox(height: 10,),
-                  Text(
-                    '${rupiah(detailModel!.data!.harga!)}',
-                    style: GoogleFonts.poppins(
-                      color: ColorApp.accent,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16
-                    ),
-                  ),
                 ],
               ),
             ),
