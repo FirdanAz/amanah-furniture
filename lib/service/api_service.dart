@@ -6,6 +6,7 @@ import 'package:amanah_furniture/model/keranjang_model.dart';
 import 'package:amanah_furniture/model/product_all_model.dart';
 import 'package:amanah_furniture/model/product_detail_model.dart';
 import 'package:amanah_furniture/model/user_model.dart';
+import 'package:amanah_furniture/ui/keranjang/keranjang_page.dart';
 import 'package:amanah_furniture/ui/widget/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -200,7 +201,7 @@ class ApiService {
         print(e.toString());
       }
   }
-  Future deleteKeranjang({required String id,}) async {
+  Future deleteKeranjang({required BuildContext context, required String id}) async {
     var endPoint = '/keranjang/hapus/$id';
     final url = '$_baseUrl$endPoint';
     String token = await PublicFunction.getToken();
@@ -213,6 +214,7 @@ class ApiService {
       );
       if(response.statusCode == 200){
         print('delete sukses');
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => KeranjangPage(),));
       }
     } catch(e) {
       print(e.toString());

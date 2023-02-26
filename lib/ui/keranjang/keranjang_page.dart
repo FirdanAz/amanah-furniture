@@ -35,7 +35,7 @@ class _KeranjangPageState extends State<KeranjangPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return _isLoad ? Scaffold(body: Center(child: CircularProgressIndicator(color: ColorApp.accent,),),) : Scaffold(
       appBar: AppBar(
         title: Text('Keranjang'),
         backgroundColor: ColorApp.accent,
@@ -46,7 +46,7 @@ class _KeranjangPageState extends State<KeranjangPage> {
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () {
-                ApiService().deleteKeranjang(id: keranjangModel!.data![index].id.toString());
+                ApiService().deleteKeranjang(context: context,id: keranjangModel!.data![index].id.toString());
               },
               child: ListTile(
                 title: Text('${keranjangModel!.data![index].namaBarang}'),
