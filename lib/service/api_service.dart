@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:amanah_furniture/common/public_function.dart';
 import 'package:amanah_furniture/model/product_all_model.dart';
 import 'package:amanah_furniture/model/product_detail_model.dart';
+import 'package:amanah_furniture/model/user_model.dart';
 import 'package:amanah_furniture/ui/widget/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -126,6 +127,38 @@ class ApiService {
       showSnackBar(context,
           content: const Text('HttpException'), color: Colors.red);
       return false;
+    }
+  }
+
+  Future getUser(BuildContext context) async {
+    const endPoint = "/user";
+    final url = '$_baseUrl$endPoint';
+    String token = await PublicFunction.getToken();
+    final headers = {
+      'Authorization': 'Bearer $token',
+    };
+
+    try {
+      final response = await http.get(Uri.parse(url), headers: headers);
+      print('status code : ${response.statusCode}');
+      if (response.statusCode == 200) {
+        return userModelFromJson(response.body);
+      } else {
+        showSnackBar(
+          context,
+          content: const Text('Terjadi kesalahan, Silahkan Coba lagi!'),
+          color: Colors.red,
+        );
+        return;
+      }
+    } on SocketException {
+      showSnackBar(context,
+          content: const Text('Tidak koneksi Internet'), color: Colors.red);
+      return;
+    } on HttpException {
+      showSnackBar(context,
+          content: const Text('HttpException'), color: Colors.red);
+      return;
     }
   }
 }

@@ -138,11 +138,7 @@ class _HomePageState extends State<HomePage> {
                               width: 5.w,
                             ),
                             InkWell(
-                              onTap: () async =>
-                                  await PublicFunction.removeToken('token')
-                                      .then((value) => PublicFunction
-                                          .navigatorPushAndRemoved(
-                                              context, const LoginPage())),
+                              onTap: () {},
                               child: Ink(
                                 width: 40.w,
                                 height: 40.h,
@@ -254,7 +250,12 @@ class _HomePageState extends State<HomePage> {
                               child: InkWell(
                                 hoverColor: Colors.blue,
                                 onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(id: item.id),));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            DetailPage(id: item.id),
+                                      ));
                                 },
                                 child: Stack(
                                   alignment: Alignment.center,
@@ -271,7 +272,8 @@ class _HomePageState extends State<HomePage> {
                                           child: Container(
                                             decoration: BoxDecoration(
                                               borderRadius:
-                                                  BorderRadius.circular(10 * fem),
+                                                  BorderRadius.circular(
+                                                      10 * fem),
                                               border: Border.all(
                                                   color: Color(0xffeeeeee)),
                                               color: Color(0xffffffff),
@@ -293,8 +295,11 @@ class _HomePageState extends State<HomePage> {
                                       left: 15 * fem,
                                       top: 0 * fem,
                                       child: Container(
-                                        padding: EdgeInsets.fromLTRB(3.39 * fem,
-                                            16.41 * fem, 3.39 * fem, 12.84 * fem),
+                                        padding: EdgeInsets.fromLTRB(
+                                            3.39 * fem,
+                                            16.41 * fem,
+                                            3.39 * fem,
+                                            12.84 * fem),
                                         width: 83 * fem,
                                         height: 105 * fem,
                                         decoration: BoxDecoration(
