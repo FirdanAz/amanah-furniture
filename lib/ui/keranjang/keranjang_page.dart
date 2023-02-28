@@ -43,6 +43,31 @@ class _KeranjangPageState extends State<KeranjangPage> {
         title: Text('Keranjang'),
         backgroundColor: ColorApp.secondary,
       ),
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          height: 50,
+          width: double.maxFinite,
+          color: Colors.white,
+          child: InkWell(
+            onTap: () {},
+            child: Container(
+              width: 260,
+              height: 40,
+              margin: EdgeInsets.all(5),
+              color: ColorApp.accent,
+              child: Center(
+                child: Text(
+                  'Checkout',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      color: Colors.white),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
       body: Container(
         child: ListView.builder(
           itemCount: keranjangModel!.data!.length,
