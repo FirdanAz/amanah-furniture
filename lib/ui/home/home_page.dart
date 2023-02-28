@@ -143,9 +143,8 @@ class _HomePageState extends State<HomePage> {
                               width: 5.w,
                             ),
                             InkWell(
-                              onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => KeranjangPage(),));
-                              },
+                              onTap: () => PublicFunction.navigatorPush(
+                                  context, KeranjangPage()),
                               child: Ink(
                                 width: 40.w,
                                 height: 40.h,
