@@ -58,10 +58,80 @@ class _DetailPageState extends State<DetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    return _isLoad
-        ? Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(color: ColorApp.accent),
+    return _isLoad ? Scaffold(body: Center(child: CircularProgressIndicator(color: ColorApp.accent),),) : Scaffold(
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          height: 70,
+          width: double.maxFinite,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      var item = detailModel!.data!;
+                       ApiService().postKeranjang(context: context ,barang_id: item.id!.toString(), nama_barang: item.namaBarang!.toString(), harga: item.harga!.toString(), jumlah: '1', total_harga: item.harga!.toString(), gambarBarang: item.gambarBarang.toString());
+                    },
+                    child: Container(
+                      width: 260,
+                      height: 40,
+                      color: ColorApp.accent,
+                      child: Center(
+                        child: Text(
+                          'Order Sekarng',
+                          style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            color: Colors.white
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 15,),
+                  InkWell(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => KeranjangPage(),)),
+                    child: SizedBox(
+                      height: 40,
+                      width: 40,
+                      child: Ink(
+                        width: 40.w,
+                        height: 40.h,
+                        decoration: BoxDecoration(
+                            color: ColorApp.accent,
+                            borderRadius: BorderRadius.circular(5)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: SvgPicture.asset(
+                              SvgAssets.vectorKeranjang),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+      backgroundColor: Colors.white,
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            pinned: true,
+            expandedHeight: 330,
+            systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: ColorApp.secondary),
+            elevation: 0,
+            backgroundColor: Colors.blue,
+            leading: InkWell(child: Icon(Icons.arrow_back_ios_new, color: ColorApp.accent), onTap: () => Navigator.pop(context),),
+            flexibleSpace: SizedBox(
+              width: double.maxFinite,
+              height: double.maxFinite,
+              child: Image.network(
+                'http://amanahfurniture.space/images/${detailModel!.data!.gambarBarang}',
+                fit: BoxFit.cover,
+              ),
             ),
           )
         : Scaffold(

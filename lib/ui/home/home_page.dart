@@ -1,6 +1,7 @@
 import 'package:amanah_furniture/common/color_app.dart';
 import 'package:amanah_furniture/common/assets.dart';
 import 'package:amanah_furniture/common/public_function.dart';
+import 'package:amanah_furniture/model/keranjang_model.dart';
 import 'package:amanah_furniture/model/product_all_model.dart';
 import 'package:amanah_furniture/service/api_service.dart';
 import 'package:amanah_furniture/ui/auth/login.dart';
@@ -21,6 +22,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   AllProduct? allProduct;
+  KeranjangModel? keranjangModel;
   bool _isLoad = false;
   int current = 0;
   List<String> items = [
@@ -34,8 +36,10 @@ class _HomePageState extends State<HomePage> {
   Future _getData() async {
     _isLoad = true;
     AllProduct product = await ApiService().getALlProduct();
+    KeranjangModel keranjang = await ApiService().getKeranjang();
     setState(() {
       allProduct = product;
+      keranjangModel = keranjang;
     });
     print(await PublicFunction.getToken());
     print(allProduct);
@@ -147,10 +151,27 @@ class _HomePageState extends State<HomePage> {
                                 decoration: BoxDecoration(
                                     color: ColorApp.accent,
                                     borderRadius: BorderRadius.circular(5)),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10),
-                                  child: SvgPicture.asset(
-                                      SvgAssets.vectorKeranjang),
+                                child: Stack(
+                                  children: [
+                                    Container(
+                                      child: Center(
+                                        child: SvgPicture.asset(
+                                          SvgAssets.vectorKeranjang,
+                                          height: 20,
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      height: 20,
+                                      width: 20,
+                                      margin: EdgeInsets.only(left: 30),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        color: Colors.white
+                                      ),
+                                      child: Center(child: _isLoad ? Text(''): Text('${keranjangModel!.data!.length}', style: TextStyle(color: ColorApp.accent),)),
+                                    )
+                                  ],
                                 ),
                               ),
                             )
