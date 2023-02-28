@@ -71,7 +71,7 @@ class _DetailPageState extends State<DetailPage> {
                   InkWell(
                     onTap: () {
                       var item = detailModel!.data!;
-                       ApiService().postKeranjang(context: context ,barang_id: item.id!.toString(), nama_barang: item.namaBarang!.toString(), harga: item.harga!.toString(), jumlah: '1', total_harga: item.harga!.toString());
+                       ApiService().postKeranjang(context: context ,barang_id: item.id!.toString(), nama_barang: item.namaBarang!.toString(), harga: item.harga!.toString(), jumlah: '1', total_harga: item.harga!.toString(), gambarBarang: item.gambarBarang.toString());
                     },
                     child: Container(
                       width: 260,

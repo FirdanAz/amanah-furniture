@@ -140,6 +140,7 @@ class ApiService {
     required String harga,
     required String jumlah,
     required String total_harga,
+    required String gambarBarang,
   }) async {
     var endPoint = '/keranjang/tambah/$barang_id';
     final url = '$_baseUrl$endPoint';
@@ -149,7 +150,8 @@ class ApiService {
       'nama_barang': nama_barang,
       'harga': harga,
       'jumlah': jumlah,
-      'total_harga': total_harga
+      'total_harga': total_harga,
+      'gambarBarang' : gambarBarang
     };
     final headers = {
       'Authorization' : 'Bearer $token'
@@ -187,7 +189,6 @@ class ApiService {
       try{
         var response = await http.get(Uri.parse(url),
             headers: {
-              'Content-Type' : 'application/json; charset=UTF-8',
               'Authorization' : 'Bearer ${await PublicFunction.getToken()}'
             }
         );

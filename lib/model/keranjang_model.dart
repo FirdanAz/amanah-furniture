@@ -33,6 +33,7 @@ class Data {
   int? barangId;
   String? username;
   String? namaBarang;
+  String? gambarBarang;
   int? harga;
   int? jumlah;
   int? totalHarga;
@@ -43,6 +44,7 @@ class Data {
         this.barangId,
         this.username,
         this.namaBarang,
+        this.gambarBarang,
         this.harga,
         this.jumlah,
         this.totalHarga});
@@ -53,6 +55,7 @@ class Data {
     barangId = json['barang_id'];
     username = json['username'];
     namaBarang = json['nama_barang'];
+    gambarBarang = json['gambar_barang'];
     harga = json['harga'];
     jumlah = json['jumlah'];
     totalHarga = json['total_harga'];
@@ -65,6 +68,7 @@ class Data {
     data['barang_id'] = this.barangId;
     data['username'] = this.username;
     data['nama_barang'] = this.namaBarang;
+    data['gambar_barang'] = this.gambarBarang;
     data['harga'] = this.harga;
     data['jumlah'] = this.jumlah;
     data['total_harga'] = this.totalHarga;
