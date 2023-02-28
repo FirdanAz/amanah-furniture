@@ -32,7 +32,7 @@ class InformasiAkunPage extends StatelessWidget {
             icon: const Icon(Icons.chevron_left,
                 size: 30, color: ColorApp.primary)),
         title: Text(
-          'Profile',
+          'Profil',
           style: TextStyle(
               fontSize: 20.sp,
               fontWeight: FontWeight.w600,

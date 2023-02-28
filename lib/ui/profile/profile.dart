@@ -3,6 +3,7 @@ import 'package:amanah_furniture/common/public_function.dart';
 import 'package:amanah_furniture/model/user_model.dart';
 import 'package:amanah_furniture/service/api_service.dart';
 import 'package:amanah_furniture/ui/auth/login.dart';
+import 'package:amanah_furniture/ui/profile/item/edit_teks/edit_teks.dart';
 import 'package:amanah_furniture/ui/profile/item/informasi_akun/informasi_akun.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -64,7 +65,7 @@ class _ProfilePageState extends State<ProfilePage> {
         toolbarHeight: 58.h,
         centerTitle: true,
         title: Text(
-          'Profile',
+          'Profil',
           style: TextStyle(
               fontSize: 20.sp,
               fontWeight: FontWeight.w600,
@@ -77,7 +78,8 @@ class _ProfilePageState extends State<ProfilePage> {
               return value
                   ? const SizedBox()
                   : IconButton(
-                      onPressed: () {},
+                      onPressed: () => PublicFunction.navigatorPush(
+                          context, EditProfilePage(userModel: _userModel!)),
                       splashRadius: 22.r,
                       icon: const Icon(Icons.edit_note,
                           size: 30, color: ColorApp.primary));
