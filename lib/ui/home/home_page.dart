@@ -5,6 +5,7 @@ import 'package:amanah_furniture/model/product_all_model.dart';
 import 'package:amanah_furniture/service/api_service.dart';
 import 'package:amanah_furniture/ui/auth/login.dart';
 import 'package:amanah_furniture/ui/detail/detail_page.dart';
+import 'package:amanah_furniture/ui/keranjang/keranjang_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -138,7 +139,8 @@ class _HomePageState extends State<HomePage> {
                               width: 5.w,
                             ),
                             InkWell(
-                              onTap: () {},
+                              onTap: () => PublicFunction.navigatorPush(
+                                  context, KeranjangPage()),
                               child: Ink(
                                 width: 40.w,
                                 height: 40.h,
